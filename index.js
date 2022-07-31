@@ -54,11 +54,11 @@ function createManager() {
       }
     },
   ]).then(answers => {
-    const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice);
+    const manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.managerOffice);
     teamArray.push(manager);
     createTeam();
   });
-};
+}
 
 function createTeam() {
   inquirer.prompt([
@@ -66,10 +66,14 @@ function createTeam() {
       message: "Select an option:",
       type: "list",
       name: "teamChoice",
-      choices: ["Engineer", "Intern", "Finish Building Team"]
+      choices: [
+        "Engineer",
+        "Intern",
+        "Finish Building Team"
+      ]
     }
   ]).then(userChoice => {
-    switch (userChoice.employeeChoice) {
+    switch (userChoice.teamChoice) {
       case "Engineer":
         createEngineer();
         break;
@@ -77,7 +81,7 @@ function createTeam() {
         createIntern();
         break;
       default:
-        writeToFile("./dist/team.html", generateHTML(teamEmployees));
+        writeToFile("./dist/team.html", generateHTML(teamArray));
     }
   });
 }
@@ -211,9 +215,9 @@ function createIntern() {
 }
 
 function writeToFile(filename, data) {
-  fs.writeFile(filename, date, (err) => {
+  fs.writeFile(filename, data, (err) => {
     if (err) throw err;
-    console.log(Success)
+    console.log("Success")
   });
 }
 

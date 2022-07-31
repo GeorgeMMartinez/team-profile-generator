@@ -1,12 +1,11 @@
 const generateTeam = team => {
 
-  // Create the html for manager
   const generateManager = manager => {
     return `
         <div class="card m-1 employee-card">
-        <div class="card-header bg-success" style="width: 17rem">
+        <div class="card-header bg-danger" style="width: 20rem">
             <h2 class="card-title">${manager.getName()}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-1"></i>${manager.getRole()}</h3>
+            <h3 class="card-title">${manager.getRole()}</h3>
         </div>
         <div class="card-body">
             <ul class="list-group">
@@ -19,13 +18,12 @@ const generateTeam = team => {
         `;
   };
 
-  // Create the html for engineers
   const generateEngineer = engineer => {
     return `
         <div class="card m-1 employee-card">
-    <div class="card-header bg-primary" style="width: 17rem">
+    <div class="card-header text-white bg-dark" style="width: 17rem">
         <h2 class="card-title">${engineer.getName()}</h2>
-        <h3 class="card-title"><i class="fas fa-glasses mr-1"></i>${engineer.getRole()}</h3>
+        <h3 class="card-title">${engineer.getRole()}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
@@ -42,9 +40,9 @@ const generateTeam = team => {
   const generateIntern = intern => {
     return `
         <div class="card m-1 employee-card">
-    <div class="card-header bg-info" style="width: 17rem">
+    <div class="card-header bg-secondary" style="width: 17rem">
         <h2 class="card-title">${intern.getName()}</h2>
-        <h3 class="card-title"><i class="fas fa-user-graduate mr-1"></i>${intern.getRole()}</h3>
+        <h3 class="card-title"></i>${intern.getRole()}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
@@ -57,12 +55,10 @@ const generateTeam = team => {
         `;
   };
 
-  //Push characters to html
   const html = [];
-  //filter() method creates a new array with all elements that pass the test implemented by the provided function.
+  
   html.push(team
     .filter(employee => employee.getRole() === "Manager")
-    //.map() will run a block of code on each element of a specific array and return an array with modified values. See 10 OOP, 13-Ins_Pass-tests, fizz.js
     .map(manager => generateManager(manager))
   );
   html.push(team
@@ -80,7 +76,6 @@ const generateTeam = team => {
 
 }
 
-// Export function to generate entire page
 module.exports = team => {
 
   return `
@@ -90,7 +85,7 @@ module.exports = team => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Awesome Company</title>
+    <title>Team Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -100,7 +95,7 @@ module.exports = team => {
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 team-heading">
-                <h1 class="text-center">Kung Fu Team</h1>
+                <h1 class="text-center">Our Team</h1>
             </div>
         </div>
     </div>
